@@ -1,0 +1,145 @@
+<div class="header">
+	<h1>Data Grid Demo</h1>
+	<h4>40,000 rows</h4>
+</div>
+<div class="grid-wrap">
+
+	<DataGrid 
+		rows={rows} 
+		columns={columns} 
+		sortFn={sortFn}
+		filterFn={filterFn}
+		bind:allowResizeFromTableCells="allowResizeFromTableCells" 
+		bind:allowResizeFromTableHeaders="allowResizeFromTableHeaders"
+		bind:allowColumnReordering="allowColumnReordering"
+		bind:rowHeight="rowHeight"
+	/>
+</div>
+<div class="controls">
+	<div>
+		<label>
+			<input type="checkbox" bind:checked="allowResizeFromTableCells"> Allow resize from table cells
+		</label>
+	</div>
+	<div>
+		<label>
+			<input type="checkbox" bind:checked="allowResizeFromTableHeaders"> Allow resize from table headers
+		</label>
+	</div>
+	<div>
+		<label>
+			<input type="checkbox" bind:checked="allowColumnReordering"> Allow dragging columns to new location
+		</label>
+	</div>
+	<div>
+		Row Height: <input type="number" bind:value="rowHeight">	
+	</div>
+</div>
+
+
+
+<style>
+
+:global(*) {
+	box-sizing: border-box;
+}
+
+.header {
+	text-align: center;
+}
+
+.controls {
+	width: 40%;
+	margin: 2em auto;
+}
+.grid-wrap {
+	width: 70%;
+	margin: 0 auto;
+	Height: calc(100vh - 300px);
+	border: 1px solid black;
+}
+
+</style>
+
+<script>
+import DataGrid from 'svelte-data-grid';
+import rows from './dataset.json';
+
+export default {
+	data() {
+		return {
+			allowResizeFromTableCells: false,
+			allowResizeFromTableHeaders: true,
+			allowColumnReordering: true,
+			rowHeight: 24,
+			rows,
+			columns: [
+				{
+					display: 'Row #',
+					dataName: 'index',
+					width: 60
+				},
+				{
+					display: 'Name',
+					dataName: 'name',
+					width: 250
+				},
+				{
+					display: 'Gender',
+					dataName: 'gender',
+					width: 100
+				},
+				{
+					display: 'Active',
+					dataName: 'isActive',
+					width: 75
+				},
+				{
+					display: 'Balance',
+					dataName: 'balance',
+					width: 115
+				},
+				{
+					display: 'Age',
+					dataName: 'age',
+					width: 45
+				},
+				{
+					display: 'Eye Color',
+					dataName: 'eyeColor',
+					width: 75
+				},
+				{
+					display: 'Email',
+					dataName: 'email',
+					width: 250
+				},
+				{
+					display: 'Company',
+					dataName: 'company',
+					width: 150
+				},
+				{
+					display: 'Address',
+					dataName: 'address',
+					width: 250
+				},
+				{
+					display: 'Favorite Fruit',
+					dataName: 'favoriteFruit',
+					width: 120
+				},
+				{
+					display: 'Registered',
+					dataName: 'registered',
+					width: 250
+				}
+			]
+		};
+	},
+	components: {
+		DataGrid
+	}
+};
+
+</script>
