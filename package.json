@@ -18,6 +18,6 @@
     "dev": "webpack-serve --content public --hot"
   },
   "dependencies": {
-    "svelte-data-grid": "^1.2.4"
+    "svelte-data-grid": "^1.2.5"
   }
 }
