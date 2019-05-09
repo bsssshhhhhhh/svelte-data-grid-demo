@@ -63,6 +63,9 @@
 
 <script>
 import DataGrid from 'svelte-data-grid';
+import TextboxCell from 'svelte-data-grid/src/textbox-cell.html';
+import SelectCell from 'svelte-data-grid/src/select-cell.html';
+import CheckboxCell from 'svelte-data-grid/src/checkbox-cell.html';
 import rows from './dataset.json';
 
 export default {
@@ -72,6 +75,7 @@ export default {
 			allowResizeFromTableHeaders: true,
 			allowColumnReordering: true,
 			rowHeight: 24,
+			__affixedColumnIndices: [0],
 			rows,
 			columns: [
 				{
@@ -82,17 +86,30 @@ export default {
 				{
 					display: 'Name',
 					dataName: 'name',
-					width: 250
+					width: 250,
+					cellComponent: TextboxCell
 				},
 				{
 					display: 'Gender',
 					dataName: 'gender',
-					width: 100
+					width: 100,
+					cellComponent: SelectCell,
+					options: [
+						{
+							display: 'Male',
+							value: 'male'
+						},
+						{
+							display: 'Female',
+							value: 'female'
+						}
+					]
 				},
 				{
 					display: 'Active',
 					dataName: 'isActive',
-					width: 75
+					width: 75,
+					cellComponent: CheckboxCell
 				},
 				{
 					display: 'Balance',
@@ -102,27 +119,46 @@ export default {
 				{
 					display: 'Age',
 					dataName: 'age',
-					width: 45
+					width: 45,
+					cellComponent: TextboxCell
 				},
 				{
 					display: 'Eye Color',
 					dataName: 'eyeColor',
-					width: 75
+					width: 75,
+					cellComponent: SelectCell,
+					options: [
+						{
+							display: 'Green',
+							value: 'green'
+						},
+						{
+							display: 'Blue',
+							value: 'blue'
+						},
+						{
+							display: 'Brown',
+							value: 'brown'
+						}
+					]
 				},
 				{
 					display: 'Email',
 					dataName: 'email',
-					width: 250
+					width: 250,
+					cellComponent: TextboxCell
 				},
 				{
 					display: 'Company',
 					dataName: 'company',
-					width: 150
+					width: 150,
+					cellComponent: TextboxCell
 				},
 				{
 					display: 'Address',
 					dataName: 'address',
-					width: 250
+					width: 250,
+					cellComponent: TextboxCell
 				},
 				{
 					display: 'Favorite Fruit',

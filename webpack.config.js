@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const path = require('path');
 const mode = process.env.NODE_ENV || 'development';
 const prod = mode === 'production';
 
@@ -10,7 +10,10 @@ module.exports = {
 	},
 	resolve: {
 		extensions: ['.js', '.html'],
-		mainFields: ['svelte']
+		mainFields: ['svelte'],
+		alias: {
+			'~': path.resolve(__dirname, 'node_modules')
+		}
 	},
 	output: {
 		path: __dirname + '/docs',
